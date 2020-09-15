@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Sky from './images/sky.jpg';
+import List from './List';
+import TodoForm from './TodoForm';
 
 function App() {
+  const [state, setState] = useState([
+    {
+      id: 1,
+      todo: "Learn React",
+      complete:false,
+    },
+    {
+      id: 2,
+      todo: "Learn Node.js",
+      complete:false,
+    },
+    {
+      id: 3,
+      todo: "Go on a walk",
+      complete:false,
+    }
+  ])
+
+  const addItem = (item) => {
+    const newTodo = { id: Math.random(), todo: item, complete: false }
+    setState([...state, newTodo])
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1 className="app__title">Welcome to the simplest Todo App</h1>
+
+      <div className="app__list">
+        <h1 className="app__size">Todos({state.length})</h1>
+        <div className="app__todos">
+          <TodoForm addItem={addItem}/>
+          <List todos={state} />
+        </div>
+      </div>
     </div>
   );
 }
