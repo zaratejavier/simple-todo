@@ -1,11 +1,12 @@
 import React from "react"
+import Todo from "./Todo"
 
 const List = ({ todos }) => {
   
   const renderTodos = () => {
     return todos.map(todo => {
       return (
-        <div>{todo.todo}</div>
+        <Todo key={todo.id} id={todo.id} todo={todo.todo} complete={todo.complete} />
       )
     })
   }

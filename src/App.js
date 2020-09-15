@@ -9,7 +9,7 @@ function App() {
     {
       id: 1,
       todo: "Learn React",
-      complete:false,
+      complete:true,
     },
     {
       id: 2,
