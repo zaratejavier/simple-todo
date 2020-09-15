@@ -1,9 +1,10 @@
 import React from "react"
 
-const Todo = ({id, todo, complete}) => {
+const Todo = ({id, todo, complete, todoClick}) => {
   return (
     <p
       style={complete ? styles.complete : styles.todo}
+      onClick={() => todoClick(id)}
     >
       {todo}
     </p>

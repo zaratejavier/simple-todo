@@ -24,9 +24,25 @@ function App() {
   ])
 
   const addItem = (item) => {
-    const newTodo = { id: Math.random(), todo: item, complete: false }
+    const newTodo = { id: Math.floor(Math.random() * 100), todo: item, complete: false }
     setState([...state, newTodo])
   }
+
+  const handleClick = (id) => {
+    const newTodos = state.map((todo) => {
+      debugger
+      if (todo.id === id) {
+        return {
+          ...todo,
+          complete: !todo.complete,
+        }
+      }
+      return todo
+   })
+    setState(newTodos)
+
+  }
+
   return (
     <div className="app">
       <h1 className="app__title">Welcome to the simplest Todo App</h1>
@@ -35,7 +51,7 @@ function App() {
         <h1 className="app__size">Todos({state.length})</h1>
         <div className="app__todos">
           <TodoForm addItem={addItem}/>
-          <List todos={state} />
+          <List todos={state} todoClick={handleClick} />
         </div>
       </div>
     </div>
