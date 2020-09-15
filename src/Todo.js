@@ -1,13 +1,16 @@
 import React from "react"
 
-const Todo = ({id, todo, complete, todoClick}) => {
+const Todo = ({id, todo, complete, todoClick, removeItem}) => {
   return (
-    <p
-      style={complete ? styles.complete : styles.todo}
-      onClick={() => todoClick(id)}
-    >
-      {todo}
-    </p>
+    <div className="todo">
+      <p
+        style={complete ? styles.complete : styles.todo}
+        onClick={() => todoClick(id)}
+      >
+        {todo}
+      </p>
+      <button onClick={() => removeItem(id)}>Delete</button>
+    </div>  
   )
 }
 

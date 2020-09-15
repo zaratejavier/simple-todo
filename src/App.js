@@ -40,7 +40,10 @@ function App() {
       return todo
    })
     setState(newTodos)
+  }
 
+  const removeItem = (id) => {
+    setState(state.filter((todo) => todo.id !== id))
   }
 
   return (
@@ -51,7 +54,7 @@ function App() {
         <h1 className="app__size">Todos({state.length})</h1>
         <div className="app__todos">
           <TodoForm addItem={addItem}/>
-          <List todos={state} todoClick={handleClick} />
+          <List todos={state} todoClick={handleClick} removeItem={removeItem} />
         </div>
       </div>
     </div>

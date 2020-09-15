@@ -1,7 +1,7 @@
 import React from "react"
 import Todo from "./Todo"
 
-const List = ({ todos,todoClick }) => {
+const List = ({ todos,todoClick, removeItem }) => {
   
   const renderTodos = () => {
     return todos.map(todo => {
@@ -12,6 +12,7 @@ const List = ({ todos,todoClick }) => {
           todo={todo.todo}
           complete={todo.complete}
           todoClick={todoClick}
+          removeItem={removeItem}
         />
       )
     })
